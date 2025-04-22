@@ -1,6 +1,5 @@
 # Unity-generated folders
 [Ll]ibrary/
-Unity-Racing/Library/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
@@ -64,4 +63,7 @@ Assets/AddressableAssetsData/*/*.bin*
 Assets/StreamingAssets/aa.meta
 Assets/StreamingAssets/aa/*
 
-# PackageCache (important!)
+# Ignore Important
+Unity-Racing/Library/
+Unity-Racing/Packages/
+Unity-Racing/Packages/com.ptc.vuforia.engine-*.tgz
