@@ -1,0 +1,13 @@
+# Usa LF en todos los archivos de texto
+* text=auto eol=lf
+
+# Archivos binarios (Unity)
+*.png binary
+*.jpg binary
+*.meta text eol=lf
+*.cs text eol=lf
+*.shader text eol=lf
+*.cginc text eol=lf
+*.unity text eol=lf
+*.prefab text eol=lf
+.gitignore text eol=lf
