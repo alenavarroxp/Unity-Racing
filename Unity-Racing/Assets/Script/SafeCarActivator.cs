@@ -4,33 +4,24 @@ using System.Collections;
 public class SafeCarActivator : MonoBehaviour
 {
     public GameObject carObject;
+    private bool isCarActive = false;
 
     public void PlaceCar()
-    {
+    {  
+        if (isCarActive) return; // Evitar activar el coche si ya está activo
         StartCoroutine(ActivateCarSafely());
     }
 
     private IEnumerator ActivateCarSafely()
     {
-        carObject.SetActive(true);
-
         Rigidbody rb = carObject.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.isKinematic = true;
-        }
-        else
-        {
-            Debug.LogError("No se encontró Rigidbody en el coche.");
-        }
+        if (rb != null) rb.isKinematic = true;
 
         yield return null;
 
-        carObject.transform.localPosition = new Vector3(0f, 0.2f, 0f);
+        isCarActive = true; // Marcar el coche como activo
+        carObject.SetActive(true); // Solo activarlo, sin tocar su posición
 
-        if (rb != null)
-        {
-            rb.isKinematic = false;
-        }
+        if (rb != null) rb.isKinematic = false;
     }
 }

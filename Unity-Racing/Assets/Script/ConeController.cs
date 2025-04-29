@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CarController : MonoBehaviour
+public class ConeController : MonoBehaviour
 {
     private Rigidbody rb;
 
