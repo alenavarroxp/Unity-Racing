@@ -335,6 +335,7 @@ Transform:
   - {fileID: 1212576552}
   - {fileID: 705598133}
   - {fileID: 1411428436}
+  - {fileID: 731811218}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &34332055
@@ -1051,7 +1052,7 @@ Transform:
   m_GameObject: {fileID: 705598132}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.010000001, z: 0.425}
+  m_LocalPosition: {x: 0, y: 0.1331, z: 0.425}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1301,6 +1302,59 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1421687733}
   m_SourcePrefab: {fileID: 100100000, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
+--- !u!1 &731811217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 731811218}
+  - component: {fileID: 731811219}
+  m_Layer: 0
+  m_Name: Ground Collider (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &731811218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731811217}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -0.69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 34332054}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &731811219
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731811217}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 0.5, z: 5}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!1001 &776564974
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1595,7 +1649,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 771ce407ce807b74885ec23ebd1e6647, type: 3}
   m_Resource: {fileID: 8300000, guid: 771ce407ce807b74885ec23ebd1e6647, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.269
   m_Pitch: 0.75
   Loop: 1
@@ -2248,7 +2302,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5, y: 0.5, z: 5}
+  m_Size: {x: 10, y: 0.5, z: 10}
   m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!4 &1421687729 stripped
 Transform:
@@ -2284,7 +2338,7 @@ MonoBehaviour:
   rearLeftCollider: {fileID: 474913042}
   rearRightMesh: {fileID: 685950763}
   rearRightCollider: {fileID: 1311360132}
-  useEffects: 1
+  useEffects: 0
   RLWParticleSystem: {fileID: 32206061}
   RRWParticleSystem: {fileID: 1604839728}
   RLWTireSkid: {fileID: 689881969}
