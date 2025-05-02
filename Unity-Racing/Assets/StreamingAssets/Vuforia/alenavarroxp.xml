@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+    <Tracking>
+        <ImageTarget name="fortnite" size="63.000000 87.237320"/>
+        <ImageTarget name="boxrock.Left" size="8.200000 4.200819"/>
+        <ImageTarget name="boxrock.Right" size="8.200000 4.200819"/>
+        <ImageTarget name="boxrock.Top" size="11.300000 8.200291"/>
+        <ImageTarget name="boxrock.Bottom" size="11.300000 8.200291"/>
+        <ImageTarget name="boxrock.Front" size="11.300000 4.200744"/>
+        <ImageTarget name="boxrock.Back" size="11.300000 4.200744"/>
+        <MultiTarget name="boxrock">
+            <Part name="boxrock.Left" translation="-5.650000095367432 0 0" rotation="AD: 0 1 0 -90"/>
+            <Part name="boxrock.Right" translation="5.650000095367432 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="boxrock.Front" translation="0 0 4.099999904632568" rotation="AD: 1 0 0 0"/>
+            <Part name="boxrock.Back" translation="0 0 -4.099999904632568" rotation="AD: 0 1 0 180"/>
+            <Part name="boxrock.Top" translation="0 2.0999999046325684 0" rotation="AD: 1 0 0 -90"/>
+            <Part name="boxrock.Bottom" translation="0 -2.0999999046325684 0" rotation="AD: 1 0 0 90"/>
+        </MultiTarget>
+    </Tracking>
+</QCARConfig>
