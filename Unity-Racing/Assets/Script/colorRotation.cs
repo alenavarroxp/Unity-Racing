@@ -3,6 +3,7 @@ using UnityEngine;
 public class ColorRotationTexture : MonoBehaviour
 {
     private Renderer carRenderer;
+    private Renderer colorRenderer;
     private bool carReady = false;
 
     void Update()
@@ -11,11 +12,13 @@ public class ColorRotationTexture : MonoBehaviour
         if (!carReady)
         {
             Transform bodyTransform = GameObject.Find("MyCar")?.transform.Find("Body");
+            Transform colorTransform = GameObject.Find("Color Car")?.transform.Find("Body");
 
-            if (bodyTransform != null && bodyTransform.gameObject.activeInHierarchy)
+            if (bodyTransform != null && bodyTransform.gameObject.activeInHierarchy && colorTransform != null && colorTransform.gameObject.activeInHierarchy)
             {
                 carRenderer = bodyTransform.GetComponent<Renderer>();
-                if (carRenderer != null)
+                colorRenderer = colorTransform.GetComponent<Renderer>();
+                if (carRenderer != null && colorRenderer != null)
                 {
                     carReady = true;
                     Debug.Log("Car renderer found and ready.");
@@ -51,6 +54,7 @@ public class ColorRotationTexture : MonoBehaviour
             if (texture != null)
             {
                 carRenderer.material.mainTexture = texture;
+                colorRenderer.material.mainTexture = texture;
             }
             else
             {
