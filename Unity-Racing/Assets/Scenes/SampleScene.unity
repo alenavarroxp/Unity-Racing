@@ -530,13 +530,13 @@ Transform:
   m_GameObject: {fileID: 94030721}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0.00000017136337, z: 0.00000014906766, w: 0.7071068}
-  m_LocalPosition: {x: 322.30762, y: -209.0915, z: 99.521866}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0.31800005, y: -0.21060611, z: 0.10199928}
+  m_LocalScale: {x: 0.005, y: 0.0049999994, z: 0.005}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 228481798}
   - {fileID: 21781680}
-  m_Father: {fileID: 1402774340}
+  m_Father: {fileID: 399218744}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &228481797
 PrefabInstance:
@@ -883,6 +883,132 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &399218743
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 399218744}
+  - component: {fileID: 399218747}
+  - component: {fileID: 399218746}
+  - component: {fileID: 399218745}
+  m_Layer: 0
+  m_Name: ColorChangeTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &399218744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399218743}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.108, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 94030722}
+  - {fileID: 276467401}
+  m_Father: {fileID: 1827901223}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &399218745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399218743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 399218747}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: colorchange
+  mDatasetName: Vuforia/alenavarroxp.xml
+  mCastedBehaviour: {fileID: 399218747}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
+--- !u!114 &399218746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399218743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886328de6a5c14cbb85854fdf1a5085b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StatusFilter: 1
+  UsePoseSmoothing: 0
+  AnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 3.3333333
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3
+      value: 1
+      inSlope: 3.3333333
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  OnTargetFound:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTargetLost:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &399218747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399218743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1631628248, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviewVisible: 1
+  RuntimeOcclusion: 0
+  RuntimeCollider: 0
+  mTrackableName: colorchange
+  mInitializedInEditor: 1
+  mDataSetPath: Vuforia/alenavarroxp.xml
+  mAspectRatio: 1.3707302
+  mImageTargetType: 0
+  mWidth: 0.063
+  mHeight: 0.086356
+  mRuntimeTexture: {fileID: 0}
+  mMotionHint: 1
+  mTrackingOptimization: 0
+  mTrackingOptimizationNeedsUpgrade: 0
+  mPreview: {fileID: 399218745}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2617,169 +2743,6 @@ WheelCollider:
   m_CorrespondingSourceObject: {fileID: 1057494946909100755, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
   m_PrefabInstance: {fileID: 727583249}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1402774335
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1402774340}
-  - component: {fileID: 1402774339}
-  - component: {fileID: 1402774338}
-  - component: {fileID: 1402774336}
-  - component: {fileID: 1402774341}
-  m_Layer: 0
-  m_Name: ColorTarget
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1402774336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402774335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd66992cd575b574b82155a69ddd2035, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1402774338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402774335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 886328de6a5c14cbb85854fdf1a5085b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StatusFilter: 2
-  UsePoseSmoothing: 0
-  AnimationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 3.3333333
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.3
-      value: 1
-      inSlope: 3.3333333
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  OnTargetFound:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1402774336}
-        m_TargetAssemblyTypeName: ColorRotationTexture, Assembly-CSharp
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  OnTargetLost:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1402774336}
-        m_TargetAssemblyTypeName: ColorRotationTexture, Assembly-CSharp
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1402774339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402774335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1631628248, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PreviewVisible: 1
-  RuntimeOcclusion: 0
-  RuntimeCollider: 0
-  mTrackableName: colorchange
-  mInitializedInEditor: 1
-  mDataSetPath: Vuforia/alenavarroxp.xml
-  mAspectRatio: 1.3707302
-  mImageTargetType: 0
-  mWidth: 0.063
-  mHeight: 0.086356
-  mRuntimeTexture: {fileID: 0}
-  mMotionHint: 1
-  mTrackingOptimization: 0
-  mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 1402774341}
---- !u!4 &1402774340
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402774335}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 70, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 276467401}
-  - {fileID: 94030722}
-  m_Father: {fileID: 1827901223}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1402774341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402774335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 1402774339}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: colorchange
-  mDatasetName: Vuforia/alenavarroxp.xml
-  mCastedBehaviour: {fileID: 1402774339}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
 --- !u!4 &1421687729 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2792218741957914664, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
@@ -3056,7 +3019,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1402774340}
+    m_TransformParent: {fileID: 399218744}
     m_Modifications:
     - target: {fileID: 100000, guid: ab2e556b62273434dad486c1e0a4ebf9, type: 3}
       propertyPath: m_Name
@@ -3064,27 +3027,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ab2e556b62273434dad486c1e0a4ebf9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 0.003
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ab2e556b62273434dad486c1e0a4ebf9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ab2e556b62273434dad486c1e0a4ebf9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ab2e556b62273434dad486c1e0a4ebf9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.3010712
+      value: -0.0019287765
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ab2e556b62273434dad486c1e0a4ebf9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.0745125
+      value: 0.0020857276
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ab2e556b62273434dad486c1e0a4ebf9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.36104774
+      value: 0.0019512177
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ab2e556b62273434dad486c1e0a4ebf9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3112,6 +3075,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ab2e556b62273434dad486c1e0a4ebf9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ab2e556b62273434dad486c1e0a4ebf9, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: ab2e556b62273434dad486c1e0a4ebf9, type: 3}
@@ -3825,8 +3792,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1.4387, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1402774340}
   - {fileID: 1499569230}
+  - {fileID: 399218744}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1880392508
