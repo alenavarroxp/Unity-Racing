@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
     <Tracking>
-        <ImageTarget name="fortnite" size="63.000000 87.237320"/>
+        <ImageTarget name="colorchange" size="0.063000 0.086356"/>
+        <ImageTarget name="gasstation" size="0.063000 0.085370"/>
         <ImageTarget name="boxrock.Left" size="8.200000 4.200819"/>
         <ImageTarget name="boxrock.Right" size="8.200000 4.200819"/>
         <ImageTarget name="boxrock.Top" size="11.300000 8.200291"/>

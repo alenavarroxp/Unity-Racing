@@ -5,16 +5,24 @@ public class ColorRotationTexture : MonoBehaviour
     private Renderer carRenderer;
     private Renderer colorRenderer;
     private bool carReady = false;
+    private bool isActive = true;
+
+    public void SetActive(bool value)
+    {
+        isActive = value;
+    }
 
     void Update()
     {
-        // Si aún no se encontró el renderer, intenta buscarlo
+        if (!isActive) return;
+
         if (!carReady)
         {
             Transform bodyTransform = GameObject.Find("MyCar")?.transform.Find("Body");
             Transform colorTransform = GameObject.Find("Color Car")?.transform.Find("Body");
 
-            if (bodyTransform != null && bodyTransform.gameObject.activeInHierarchy && colorTransform != null && colorTransform.gameObject.activeInHierarchy)
+            if (bodyTransform != null && bodyTransform.gameObject.activeInHierarchy &&
+                colorTransform != null && colorTransform.gameObject.activeInHierarchy)
             {
                 carRenderer = bodyTransform.GetComponent<Renderer>();
                 colorRenderer = colorTransform.GetComponent<Renderer>();
@@ -35,18 +43,17 @@ public class ColorRotationTexture : MonoBehaviour
             }
         }
 
-        // Si ya está listo, aplicar la textura según rotación
-        float angleY = transform.localEulerAngles.y;
-        int snappedAngle = Mathf.RoundToInt(angleY / 90f) * 90 % 360;
+        float angleY = transform.localEulerAngles.y % 360f;
+        string textureName = null;
 
-        string textureName = snappedAngle switch
-        {
-            0 => "AFRC_Tex_Col1",
-            90 => "AFRC_Tex_Col2",
-            180 => "AFRC_Tex_Col3",
-            270 => "AFRC_Tex_Col5",
-            _ => null
-        };
+        if (angleY >= 0f && angleY < 90f)
+            textureName = "AFRC_Tex_Col1";
+        else if (angleY >= 90f && angleY < 180f)
+            textureName = "AFRC_Tex_Col2";
+        else if (angleY >= 180f && angleY < 270f)
+            textureName = "AFRC_Tex_Col3";
+        else if (angleY >= 270f && angleY < 360f)
+            textureName = "AFRC_Tex_Col5";
 
         if (!string.IsNullOrEmpty(textureName))
         {
