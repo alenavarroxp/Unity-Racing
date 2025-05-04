@@ -4,6 +4,11 @@ public class CarController : MonoBehaviour
 {
     private Rigidbody rb;
 
+    public Material gasStationMat;
+    public Material gasStationMat1;
+
+    public Renderer gasGroundRenderer;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -32,6 +37,24 @@ public class CarController : MonoBehaviour
         if (other.CompareTag("Gas"))
         {
             Debug.Log("Gas Triggered");
+            if (gasGroundRenderer != null)
+            {
+                gasGroundRenderer.material = gasStationMat1;
+            }
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        Debug.Log("Algo salió del trigger: " + other.name);
+
+        if (other.CompareTag("Gas"))
+        {
+            Debug.Log("Gas Exited");
+
+            if (gasGroundRenderer != null)
+            {
+                gasGroundRenderer.material = gasStationMat;
+            }
         }
     }
 }
