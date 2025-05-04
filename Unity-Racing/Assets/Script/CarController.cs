@@ -25,4 +25,13 @@ public class CarController : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeAll;
         }
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Algo entró al trigger: " + other.name);
+        if (other.CompareTag("Gas"))
+        {
+            Debug.Log("Gas Triggered");
+        }
+    }
 }
