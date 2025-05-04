@@ -39,9 +39,9 @@ namespace Ilumisoft.HealthSystem
             {
                 consumeTimer += Time.deltaTime;
 
-                if (consumeTimer >= 0.01f)
+                if (consumeTimer >= 1f)
                 {
-                    ApplyDamage(0.5f);
+                    ApplyDamage(0.1f);
                     consumeTimer = 0f;
                 }
             }
@@ -131,5 +131,18 @@ namespace Ilumisoft.HealthSystem
         {
             isConsuming = !isConsuming;
         }
+
+        public void RefillHealth()
+        {
+            if (!IsAlive) return;
+
+            float missingHealth = MaxHealth - CurrentHealth;
+            Debug.Log("RefillHealth called: " + missingHealth);
+            if (missingHealth > 0)
+            {
+                AddHealth(missingHealth);
+            }
+        }
+
     }
 }

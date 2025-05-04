@@ -1,4 +1,5 @@
 using UnityEngine;
+using Ilumisoft.HealthSystem;
 
 public class CarController : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class CarController : MonoBehaviour
     public Material gasStationMat1;
 
     public Renderer gasGroundRenderer;
+
+    [SerializeField] private Health health;
 
     void Awake()
     {
@@ -40,6 +43,8 @@ public class CarController : MonoBehaviour
             if (gasGroundRenderer != null)
             {
                 gasGroundRenderer.material = gasStationMat1;
+                if (health != null)
+                    health.RefillHealth();
             }
         }
     }
