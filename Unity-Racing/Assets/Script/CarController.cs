@@ -41,6 +41,13 @@ public class CarController : MonoBehaviour
             if (gasGroundRenderer != null)
                     gasGroundRenderer.material = gasStationMat1;
 
+            GameObject FuelPump = GameObject.Find("FuelPump");
+        
+            if (FuelPump != null)
+            {
+                FuelPump.transform.localScale = new Vector3(0.012f, 0.012f, 0.012f);
+            }
+
             Debug.Log("Gas Triggered " + centerConnection.Distance.ToString("F2") + " cm");
 
              if (centerConnection != null)
@@ -64,6 +71,13 @@ public class CarController : MonoBehaviour
             if (gasGroundRenderer != null)
             {
                 gasGroundRenderer.material = gasStationMat;
+            }
+
+            GameObject FuelPump = GameObject.Find("FuelPump");
+        
+            if (FuelPump != null)
+            {
+                FuelPump.transform.localScale = new Vector3(0.006f, 0.006f, 0.006f);
             }
         }
     }

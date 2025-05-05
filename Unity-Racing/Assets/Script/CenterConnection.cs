@@ -10,9 +10,15 @@ public class CenterConnection : MonoBehaviour
     private LineRenderer lineRenderer;
 
     private float distance;
+    public bool gasTracked = false;
+    public bool chargerTracked = false;
 
     public float Distance { get { return distance; } }
     private bool isActive = false;
+
+    [SerializeField] private AudioSource audioSource;
+    private bool hasPlayedSound = false;
+
 
     public void SetActive(bool value)
     {
@@ -25,11 +31,21 @@ public class CenterConnection : MonoBehaviour
         }
     }
 
+    public void SetGasTracked(bool value)
+    {
+        gasTracked = value;
+    }
+
+    public void SetChargerTracked(bool value)
+    {
+        chargerTracked = value;
+    }
+
     void Update()
     {
         if (!isActive) return;
 
-        if (gasCenter.activeSelf && chargerCenter.activeSelf)
+        if (isActive && gasTracked && chargerTracked)
         {
          if (lineRenderer == null)
             {
@@ -59,7 +75,15 @@ public class CenterConnection : MonoBehaviour
                     health.RefillHealth();
                     Debug.Log("Gas Triggered " + distance.ToString("F2") + " cm");
                 }
-            }
+
+                 if (!hasPlayedSound && audioSource != null)
+                {
+                    Debug.Log("Playing sound: " + audioSource.clip.name);
+                    audioSource.Play();
+                    hasPlayedSound = true;
+                }
+            }else
+                hasPlayedSound = false;
            
         }
         else
