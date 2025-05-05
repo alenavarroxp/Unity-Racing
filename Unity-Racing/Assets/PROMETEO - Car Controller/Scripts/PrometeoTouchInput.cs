@@ -14,6 +14,8 @@ public class PrometeoTouchInput : MonoBehaviour
 
     bool isOutOfFuel = false;
     private AudioSource audioSource;
+    public GarageManager garageManager;
+
 
     void Start() {
       rectTransform = GetComponent<RectTransform>();
@@ -24,6 +26,16 @@ public class PrometeoTouchInput : MonoBehaviour
           audioSource = soundObject.GetComponent<AudioSource>();
       } else {
           Debug.LogWarning("No Starting Sound GameObject not found.");
+      }
+
+      GameObject garageManagerObject = GameObject.Find("GarageTarget");
+      if (garageManagerObject != null) {
+          garageManager = garageManagerObject.GetComponent<GarageManager>();
+          if (garageManager == null) {
+              Debug.LogWarning("GarageManager component not found on GarageManager GameObject.");
+          }
+      } else {
+          Debug.LogWarning("GarageManager GameObject not found.");
       }
     }
 
@@ -79,5 +91,28 @@ public class PrometeoTouchInput : MonoBehaviour
           rectTransform.localScale = initialScale;
       }
     }
+
+    public void ChangeCarLeft()
+    {
+      if (changeScaleOnPressed) {
+          rectTransform.localScale = initialScale * scaleDownMultiplier;
+      }
+      if (garageManager != null)
+      {
+          garageManager.PrevCar();
+      }
+    }
+
+    public void ChangeCarRight()
+    {
+      if (changeScaleOnPressed) {
+          rectTransform.localScale = initialScale * scaleDownMultiplier;
+      }
+      if (garageManager != null)
+      {
+          garageManager.NextCar();
+      }
+    }
+
 
 }
