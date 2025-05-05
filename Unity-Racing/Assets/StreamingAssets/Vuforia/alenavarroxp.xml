@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
     <Tracking>
+        <ImageTarget name="garage" size="0.063000 0.089131"/>
         <ImageTarget name="charger" size="0.063000 0.086845"/>
         <ImageTarget name="colorchange" size="0.063000 0.086356"/>
         <ImageTarget name="gasstation" size="0.063000 0.085370"/>
         <ImageTarget name="boxrock.Top" size="11.300000 8.200291"/>
-        <ImageTarget name="boxrock.Front" size="11.300000 4.200744"/>
         <ImageTarget name="boxrock.Bottom" size="11.300000 8.200291"/>
-        <ImageTarget name="boxrock.Left" size="8.200000 4.200819"/>
         <ImageTarget name="boxrock.Right" size="8.200000 4.200819"/>
         <ImageTarget name="boxrock.Back" size="11.300000 4.200744"/>
+        <ImageTarget name="boxrock.Left" size="8.200000 4.200819"/>
+        <ImageTarget name="boxrock.Front" size="11.300000 4.200744"/>
         <MultiTarget name="boxrock">
             <Part name="boxrock.Left" translation="-5.650000095367432 0 0" rotation="AD: 0 1 0 -90"/>
             <Part name="boxrock.Right" translation="5.650000095367432 0 0" rotation="AD: 0 1 0 90"/>
