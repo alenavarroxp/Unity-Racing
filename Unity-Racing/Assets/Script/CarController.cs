@@ -1,5 +1,4 @@
 using UnityEngine;
-using Ilumisoft.HealthSystem;
 
 public class CarController : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class CarController : MonoBehaviour
 
     public Renderer gasGroundRenderer;
 
-    [SerializeField] private Health health;
+    [SerializeField] private CenterConnection centerConnection;
 
     void Awake()
     {
@@ -38,16 +37,22 @@ public class CarController : MonoBehaviour
     {
         Debug.Log("Algo entró al trigger: " + other.name);
         if (other.CompareTag("Gas"))
-        {
-            Debug.Log("Gas Triggered");
+        {   
             if (gasGroundRenderer != null)
+                    gasGroundRenderer.material = gasStationMat1;
+
+            Debug.Log("Gas Triggered " + centerConnection.Distance.ToString("F2") + " cm");
+
+             if (centerConnection != null)
             {
-                gasGroundRenderer.material = gasStationMat1;
-                if (health != null)
-                    health.RefillHealth();
+                centerConnection.SetActive(true);   
             }
+            else
+                Debug.Log("Gas Triggered fuera de 30cm");
+            
         }
     }
+    
     void OnTriggerExit(Collider other)
     {
         Debug.Log("Algo salió del trigger: " + other.name);
