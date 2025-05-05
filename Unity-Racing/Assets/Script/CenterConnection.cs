@@ -45,7 +45,7 @@ public class CenterConnection : MonoBehaviour
     {
         if (!isActive) return;
 
-        if (isActive && gasTracked && chargerTracked)
+        if (gasTracked && chargerTracked)
         {
          if (lineRenderer == null)
             {
@@ -67,7 +67,7 @@ public class CenterConnection : MonoBehaviour
             lineRenderer.SetPosition(1, carPos);
 
             distance = Vector3.Distance(gasPos, carPos);
-
+            Debug.Log("Distance: " + distance.ToString("F2") + " cm");
             if(distance < 0.3f)
             {
                 if (health != null)

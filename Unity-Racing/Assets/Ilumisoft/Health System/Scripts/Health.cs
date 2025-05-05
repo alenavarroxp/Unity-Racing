@@ -19,16 +19,34 @@ namespace Ilumisoft.HealthSystem
         /// </summary>
         public bool isConsuming = false;
 
-        // Referencia al componente Image que cambiará de color
         [SerializeField] private Image healthImage;
 
         public override float MaxHealth { get => maxHealth; set => maxHealth = value; }
         public override float CurrentHealth { get; set; } = 0.0f;
         public override bool IsAlive => CurrentHealth > 0.0f;
 
+        public PrometeoTouchInput throttleInput;
+        public PrometeoTouchInput backInput;
+
         private void Awake()
         {
             SetHealth(maxHealth * initialRatio);
+
+            GameObject touchInputObject = GameObject.Find("Throttle Button");
+            GameObject backInputObject = GameObject.Find("Brakes/Reverse Button");
+            if (touchInputObject != null && backInputObject != null)
+            {
+                throttleInput = touchInputObject.GetComponent<PrometeoTouchInput>();
+                backInput = backInputObject.GetComponent<PrometeoTouchInput>();
+                if (throttleInput == null || backInput == null)
+                {
+                    Debug.LogError("No se encontró el componente PrometeoTouchInput en el objeto Throttle Button o Brakes/Reverse Button.");
+                }
+            }
+            else
+            {
+                Debug.LogError("No se encontró el objeto TouchInput en la escena.");
+            }
         }
 
         private float consumeTimer = 0f;
@@ -39,11 +57,20 @@ namespace Ilumisoft.HealthSystem
             {
                 consumeTimer += Time.deltaTime;
 
-                if (consumeTimer >= 1f)
+                if (consumeTimer >= 0.01f)
                 {
-                    ApplyDamage(0.1f);
+                    ApplyDamage(0.2f);
                     consumeTimer = 0f;
                 }
+            }
+            if(!IsAlive){
+                Debug.Log("NOT FUEL is empty, stopping consumption.");
+                isConsuming = false;
+                throttleInput.SetIsOutOfFuel(true);
+                backInput.SetIsOutOfFuel(true); 
+
+                throttleInput.ForceButtonUp();
+                backInput.ForceButtonUp();
             }
         }
 
@@ -65,8 +92,6 @@ namespace Ilumisoft.HealthSystem
 
         public override void AddHealth(float amount)
         {
-            if (!IsAlive) return;
-
             float previousHealth = CurrentHealth;
 
             CurrentHealth += amount;
@@ -134,13 +159,13 @@ namespace Ilumisoft.HealthSystem
 
         public void RefillHealth()
         {
-            if (!IsAlive) return;
-
             float missingHealth = MaxHealth - CurrentHealth;
             Debug.Log("RefillHealth called: " + missingHealth);
             if (missingHealth > 0)
             {
                 AddHealth(missingHealth);
+                throttleInput.SetIsOutOfFuel(false);
+                backInput.SetIsOutOfFuel(false);
             }
         }
 
