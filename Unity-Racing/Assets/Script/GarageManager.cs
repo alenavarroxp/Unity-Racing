@@ -30,7 +30,7 @@ public class GarageManager : MonoBehaviour
     public Transform carSpawnPoint;
     public Transform carParent;
     public List<GameObject> carVariants;
-    private GameObject currentCar;
+    public GameObject currentCar;
 
     private void Start()
     {
@@ -154,11 +154,22 @@ public class GarageManager : MonoBehaviour
 
     public void ConfirmCar()
     {
+        // Guarda la posición y rotación global del coche actual antes de cambiarlo
+        Vector3 currentCarWorldPosition = currentCar.transform.position;
+        Quaternion currentCarWorldRotation = currentCar.transform.rotation;
+
+        // Activa el coche correspondiente al índice actual
         for (int i = 0; i < carVariants.Count; i++)
         {
             carVariants[i].SetActive(i == currentIndex);
         }
 
+        // Actualiza currentCar
         currentCar = carVariants[currentIndex];
+
+        // Restaura la posición y rotación global al coche seleccionado
+        currentCar.transform.position = currentCarWorldPosition;
+        currentCar.transform.rotation = currentCarWorldRotation;
     }
+
 }

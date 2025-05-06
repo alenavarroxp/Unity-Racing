@@ -424,6 +424,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 673998097}
+        m_TargetAssemblyTypeName: CarController, Assembly-CSharp
+        m_MethodName: enableRigidBody
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 705598138}
         m_TargetAssemblyTypeName: ConeController, Assembly-CSharp
         m_MethodName: enableRigidBody
@@ -440,6 +452,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1421687733}
+        m_TargetAssemblyTypeName: CarController, Assembly-CSharp
+        m_MethodName: enableRigidBody
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 673998097}
         m_TargetAssemblyTypeName: CarController, Assembly-CSharp
         m_MethodName: enableRigidBody
         m_Mode: 6
@@ -1234,8 +1258,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car1: {fileID: 1341253888}
   car2: {fileID: 1585213526}
-  selectedCar: {fileID: 1341253888}
-  myCarPrefab: {fileID: 55365624}
   keyObject: {fileID: 698799823}
   statsObject: {fileID: 1251864191}
   offsetCar1: {x: -0.45, y: 1.484054, z: -0.4393685}
@@ -1253,6 +1275,7 @@ MonoBehaviour:
   carVariants:
   - {fileID: 55365624}
   - {fileID: 673998096}
+  currentCar: {fileID: 55365624}
 --- !u!114 &227363566
 MonoBehaviour:
   m_ObjectHideFlags: 0
