@@ -1,14 +1,14 @@
 using UnityEngine;
 using Vuforia;
+using System.Collections.Generic;
 using System.Collections;
 using TMPro;
-
 
 public class GarageManager : MonoBehaviour
 {
     public GameObject car1;
     public GameObject car2;
-    public GameObject selectedCar;
+    private GameObject selectedCar;
 
     private bool isTargetTracked = false;
     private int currentIndex = 0; // 0 = car1, 1 = car2
@@ -27,6 +27,10 @@ public class GarageManager : MonoBehaviour
     public TextMeshPro turboText;
 
     public float moveDuration = 0.5f;
+    public Transform carSpawnPoint;
+    public Transform carParent;
+    public List<GameObject> carVariants;
+    private GameObject currentCar;
 
     private void Start()
     {
@@ -40,7 +44,17 @@ public class GarageManager : MonoBehaviour
         car1.SetActive(true);
         car2.SetActive(true);
 
-        SelectCar(0);
+        if (currentCar != null)
+        {
+            if (currentCar.name.ToLower().Contains("prometheus"))
+                SelectCar(1); // PROMETEO
+            else
+                SelectCar(0); // FREE RACING CAR
+        }
+        else
+        {
+            SelectCar(0);
+        }
     }
 
     private void Update()
@@ -62,14 +76,17 @@ public class GarageManager : MonoBehaviour
         selectedCar = index == 0 ? car1 : car2;
         currentIndex = index;
 
+        // Reset rotations
         car1.transform.localRotation = Quaternion.Euler(0, 0, 0);
         car2.transform.localRotation = Quaternion.Euler(0, 0, 0);
 
+        // Mover key y stats
         Vector3 targetKeyLocalPos = index == 0 ? offsetCar1 : offsetCar2;
         Vector3 targetStatsLocalPos = index == 0 ? offsetStats1 : offsetStats2;
         StopAllCoroutines();
         StartCoroutine(MoveKeySmoothly(targetKeyLocalPos));
         StartCoroutine(MoveStatsSmoothly(targetStatsLocalPos));
+
         UpdateCarStatsUI();
     }
 
@@ -81,7 +98,7 @@ public class GarageManager : MonoBehaviour
 
     public void PrevCar()
     {
-        int newIndex = (currentIndex - 1) % 2;
+        int newIndex = (currentIndex - 1 + 2) % 2; // Maneja el -1
         SelectCar(newIndex);
     }
 
@@ -135,4 +152,13 @@ public class GarageManager : MonoBehaviour
         }
     }
 
+    public void ConfirmCar()
+    {
+        for (int i = 0; i < carVariants.Count; i++)
+        {
+            carVariants[i].SetActive(i == currentIndex);
+        }
+
+        currentCar = carVariants[currentIndex];
+    }
 }
