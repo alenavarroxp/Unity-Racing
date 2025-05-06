@@ -1236,8 +1236,16 @@ MonoBehaviour:
   car2: {fileID: 1585213526}
   selectedCar: {fileID: 1341253888}
   keyObject: {fileID: 698799823}
-  offsetCar1: {x: -0.45, y: 0, z: 0}
-  offsetCar2: {x: 0.45, y: 0, z: 0}
+  statsObject: {fileID: 1251864191}
+  offsetCar1: {x: -0.45, y: 1.484054, z: -0.4393685}
+  offsetCar2: {x: 0.45, y: 1.484054, z: -0.4393685}
+  offsetStats1: {x: -0.45, y: 7.412627, z: 0.2363281}
+  offsetStats2: {x: 0.45, y: 7.412627, z: 0.2363281}
+  carNameText: {fileID: 581157506}
+  massText: {fileID: 564335885}
+  maxSpeedText: {fileID: 47688770}
+  reverseSpeedText: {fileID: 1522974655}
+  turboText: {fileID: 1614144622}
   moveDuration: 0.5
 --- !u!114 &227363566
 MonoBehaviour:
@@ -3380,7 +3388,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ARCADE - Free Racing Car
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -3727,7 +3735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3887601016171859987, guid: 7c192d7eb2f177148a065545bab91a28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9010974
+      value: 1.4840544
       objectReference: {fileID: 0}
     - target: {fileID: 3887601016171859987, guid: 7c192d7eb2f177148a065545bab91a28, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6278,7 +6286,7 @@ Transform:
   m_GameObject: {fileID: 1251864190}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.47199988, y: 6.578541, z: 0.5696614}
+  m_LocalPosition: {x: -0.45, y: 7.4126267, z: 0.23632807}
   m_LocalScale: {x: 0.873552, y: 0.005, z: 7.3843246}
   m_ConstrainProportionsScale: 0
   m_Children:
