@@ -57,9 +57,9 @@ namespace Ilumisoft.HealthSystem
             {
                 consumeTimer += Time.deltaTime;
 
-                if (consumeTimer >= 0.01f)
+                if (consumeTimer >= 1f)
                 {
-                    ApplyDamage(0.2f);
+                    ApplyDamage(0.1f);
                     consumeTimer = 0f;
                 }
             }

@@ -32,6 +32,10 @@ public class GarageManager : MonoBehaviour
     public List<GameObject> carVariants;
     public GameObject currentCar;
 
+    public GameObject carRepairParticlesPrefab;
+    private AudioSource audioSource;
+    public GameObject selectButton;
+
     private void Start()
     {
         var observer = GetComponent<ObserverBehaviour>();
@@ -55,6 +59,14 @@ public class GarageManager : MonoBehaviour
         {
             SelectCar(0);
         }
+
+        GameObject soundObject = GameObject.Find("Drill Sound");
+        if (soundObject != null) {
+            audioSource = soundObject.GetComponent<AudioSource>();
+        } else {
+            Debug.LogWarning("No Starting Sound GameObject not found.");
+        }
+
     }
 
     private void Update()
@@ -154,6 +166,11 @@ public class GarageManager : MonoBehaviour
 
     public void ConfirmCar()
     {
+       if (audioSource != null && audioSource.isPlaying)
+        return;
+
+        if (selectButton != null)
+        StartCoroutine(DisableButtonTemporarily(1.5f));
         // Guarda la posición y rotación global del coche actual antes de cambiarlo
         Vector3 currentCarWorldPosition = currentCar.transform.position;
         Quaternion currentCarWorldRotation = currentCar.transform.rotation;
@@ -170,6 +187,23 @@ public class GarageManager : MonoBehaviour
         // Restaura la posición y rotación global al coche seleccionado
         currentCar.transform.position = currentCarWorldPosition;
         currentCar.transform.rotation = currentCarWorldRotation;
+
+        if (audioSource != null)
+        audioSource.Play();
+
+        if (carRepairParticlesPrefab != null)
+        {
+            GameObject particles = Instantiate(carRepairParticlesPrefab, currentCar.transform.position, Quaternion.identity);
+            particles.transform.SetParent(currentCar.transform); // opcional
+            Destroy(particles, 3f);
+        }
+    }
+
+    private IEnumerator DisableButtonTemporarily(float seconds)
+    {
+        selectButton.SetActive(false);
+        yield return new WaitForSeconds(seconds);
+        selectButton.SetActive(true);
     }
 
 }
