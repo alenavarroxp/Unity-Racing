@@ -161,6 +161,7 @@ public class PrometeoCarController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+      if (!isActiveAndEnabled) return;
       //In this part, we set the 'carRigidbody' value with the Rigidbody attached to this
       //gameObject. Also, we define the center of mass of the car with the Vector3 given
       //in the inspector.
@@ -266,14 +267,17 @@ public class PrometeoCarController : MonoBehaviour
     void Update()
     {
 
+      if (!isActiveAndEnabled) return;
       //CAR DATA
-
       // We determine the speed of the car.
-      carSpeed = (2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 60) / 1000;
+      //carSpeed = (2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 60) / 1000;
       // Save the local velocity of the car in the x axis. Used to know if the car is drifting.
       localVelocityX = transform.InverseTransformDirection(carRigidbody.linearVelocity).x;
       // Save the local velocity of the car in the z axis. Used to know if the car is going forward or backwards.
       localVelocityZ = transform.InverseTransformDirection(carRigidbody.linearVelocity).z;
+      
+      carSpeed = Mathf.Abs(localVelocityZ) * 50f; // escalar a gusto
+
 
       //CAR PHYSICS
 
@@ -376,8 +380,10 @@ public class PrometeoCarController : MonoBehaviour
 
       if(useUI){
           try{
-            float absoluteCarSpeed = Mathf.Abs(carSpeed);
-            carSpeedText.text = Mathf.RoundToInt(absoluteCarSpeed).ToString();
+            Debug.Log("Car Speed: " + carSpeed);
+            float absoluteCarSpeed = (float)Math.Round(Mathf.Abs(carSpeed), 2);
+            int speedInt = Mathf.RoundToInt(absoluteCarSpeed);
+            carSpeedText.text = speedInt.ToString();
           }catch(Exception ex){
             Debug.LogWarning(ex);
           }
