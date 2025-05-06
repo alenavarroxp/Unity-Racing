@@ -2,58 +2,76 @@ using UnityEngine;
 
 public class ColorRotationTexture : MonoBehaviour
 {
+    [SerializeField] private GameObject colorCar;
+    [SerializeField] private GameObject secondColorCar;
+
     private Renderer carRenderer;
     private Renderer colorRenderer;
-    private bool carReady = false;
+
+    private GameObject currentActiveCar;
+    private GameObject currentColorCar;
+
     private bool isActive = true;
 
-    public void SetActive(bool value)
+    public void SetActive(bool value) => isActive = value;
+
+    void Start()
     {
-        isActive = value;
+        colorCar?.SetActive(false);
+        secondColorCar?.SetActive(false);
     }
 
     void Update()
     {
         if (!isActive) return;
 
-        if (!carReady)
-        {
-            Transform bodyTransform = GameObject.Find("MyCar")?.transform.Find("Body");
-            Transform colorTransform = GameObject.Find("Color Car")?.transform.Find("Body");
+        GameObject myCar = GameObject.Find("MyCar");
+        GameObject secondCar = GameObject.Find("SecondCar");
 
-            if (bodyTransform != null && bodyTransform.gameObject.activeInHierarchy &&
-                colorTransform != null && colorTransform.gameObject.activeInHierarchy)
+        bool myCarActive = myCar != null && myCar.activeInHierarchy;
+        bool secondCarActive = secondCar != null && secondCar.activeInHierarchy;
+
+        Debug.Log("MyCar Active: " + myCarActive);
+        Debug.Log("SecondCar Active: " + secondCarActive);
+
+        GameObject newActiveCar = myCarActive ? myCar : (secondCarActive ? secondCar : null);
+        GameObject newColorCar = myCarActive ? colorCar : (secondCarActive ? secondColorCar : null);
+
+        // Si cambia el coche activo, actualiza renderers y colorCar visibles
+        if (newActiveCar != currentActiveCar)
+        {
+            currentActiveCar = newActiveCar;
+            currentColorCar = newColorCar;
+
+            if (colorCar != null) colorCar.SetActive(colorCar == currentColorCar);
+            if (secondColorCar != null) secondColorCar.SetActive(secondColorCar == currentColorCar);
+
+            if (currentActiveCar != null)
             {
-                carRenderer = bodyTransform.GetComponent<Renderer>();
-                colorRenderer = colorTransform.GetComponent<Renderer>();
-                if (carRenderer != null && colorRenderer != null)
-                {
-                    carReady = true;
-                    Debug.Log("Car renderer found and ready.");
-                }
-                else
-                {
-                    Debug.LogWarning("Body found, but no Renderer component.");
-                }
+                carRenderer = currentActiveCar.transform.Find("Body")?.GetComponent<Renderer>();
+                colorRenderer = currentColorCar?.transform.Find("Body")?.GetComponent<Renderer>();
+
+                Debug.Log("Updated renderers for new active car.");
             }
             else
             {
-                Debug.Log("Waiting for MyCar/Body to appear and be active...");
-                return;
+                carRenderer = null;
+                colorRenderer = null;
+                Debug.Log("No active car found.");
             }
         }
 
-        float angleY = transform.localEulerAngles.y % 360f;
-        string textureName = null;
+        if (carRenderer == null || colorRenderer == null) return;
 
-        if (angleY >= 0f && angleY < 90f)
-            textureName = "AFRC_Tex_Col1";
-        else if (angleY >= 90f && angleY < 180f)
-            textureName = "AFRC_Tex_Col2";
-        else if (angleY >= 180f && angleY < 270f)
-            textureName = "AFRC_Tex_Col3";
-        else if (angleY >= 270f && angleY < 360f)
-            textureName = "AFRC_Tex_Col5";
+        float angleY = transform.localEulerAngles.y % 360f;
+        string textureName = angleY switch
+        {
+            >= 0f and < 90f => "AFRC_Tex_Col1",
+            >= 90f and < 180f => "AFRC_Tex_Col2",
+            >= 180f and < 270f => "AFRC_Tex_Col3",
+            >= 270f and < 360f => "AFRC_Tex_Col5",
+            _ => null
+        };
 
         if (!string.IsNullOrEmpty(textureName))
         {
