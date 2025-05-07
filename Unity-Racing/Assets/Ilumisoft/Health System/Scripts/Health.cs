@@ -152,6 +152,10 @@ namespace Ilumisoft.HealthSystem
             if (missingHealth > 0)
             {
                 AddHealth(missingHealth);
+                if(throttleInput == null || backInput == null){
+                    throttleInput = GameObject.Find("Throttle Button")?.GetComponentInChildren<PrometeoTouchInput>(true);
+                    backInput = GameObject.Find("Brakes/Reverse Button")?.GetComponentInChildren<PrometeoTouchInput>(true);
+                }
                 throttleInput.SetIsOutOfFuel(false);
                 backInput.SetIsOutOfFuel(false);
             }

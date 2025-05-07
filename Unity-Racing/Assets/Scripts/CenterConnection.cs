@@ -43,6 +43,8 @@ public class CenterConnection : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Gas Tracked: " + gasTracked + ", Charger Tracked: " + chargerTracked);
+        Debug.Log("Is Active: " + isActive);
         if (!isActive) return;
 
         if (gasTracked && chargerTracked)
