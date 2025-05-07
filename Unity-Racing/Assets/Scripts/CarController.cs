@@ -11,6 +11,8 @@ public class CarController : MonoBehaviour
 
     [SerializeField] private CenterConnection centerConnection;
 
+    [SerializeField] private ObjectBar objectBar;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -61,6 +63,10 @@ public class CarController : MonoBehaviour
 
         if(other.CompareTag("Collectible")){
             other.GetComponent<CollectibleObject>().Collect();
+            if (objectBar != null)
+            {
+                objectBar.AddObject();
+            }
         }
     }
     

@@ -32,21 +32,9 @@ namespace Ilumisoft.HealthSystem
         {
             SetHealth(maxHealth * initialRatio);
 
-            GameObject touchInputObject = GameObject.Find("Throttle Button");
-            GameObject backInputObject = GameObject.Find("Brakes/Reverse Button");
-            if (touchInputObject != null && backInputObject != null)
-            {
-                throttleInput = touchInputObject.GetComponent<PrometeoTouchInput>();
-                backInput = backInputObject.GetComponent<PrometeoTouchInput>();
-                if (throttleInput == null || backInput == null)
-                {
-                    Debug.LogError("No se encontró el componente PrometeoTouchInput en el objeto Throttle Button o Brakes/Reverse Button.");
-                }
-            }
-            else
-            {
-                Debug.LogError("No se encontró el objeto TouchInput en la escena.");
-            }
+            throttleInput = GameObject.Find("Throttle Button")?.GetComponentInChildren<PrometeoTouchInput>(true);
+            backInput = GameObject.Find("Brakes/Reverse Button")?.GetComponentInChildren<PrometeoTouchInput>(true);
+
         }
 
         private float consumeTimer = 0f;
