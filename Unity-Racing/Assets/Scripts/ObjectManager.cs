@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
-    public GameObject[] collectiblePrefabs;
-    public Transform[] spawnPoints;
+    public GameObject[] objects;
 
-    void Start()
+    public void EnableRigidBodies(bool enable)
     {
-        for (int i = 0; i < spawnPoints.Length; i++)
+        foreach (GameObject obj in objects)
         {
-            int index = Random.Range(0, collectiblePrefabs.Length);
-            Instantiate(collectiblePrefabs[index], spawnPoints[i].position, Quaternion.identity);
+            if (obj != null)
+            {
+                ObjectController controller = obj.GetComponent<ObjectController>();
+                if (controller != null)
+                {
+                    controller.enableRigidBody(enable);
+                }
+            }
         }
     }
 }
