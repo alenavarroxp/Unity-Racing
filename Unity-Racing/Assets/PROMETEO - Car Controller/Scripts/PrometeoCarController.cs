@@ -268,6 +268,16 @@ public class PrometeoCarController : MonoBehaviour
     {
 
       if (!isActiveAndEnabled) return;
+
+      multiplier = isTurboActive ? turboMultiplier : 1f;
+
+      if(isTurboActive){
+        maxSpeed = (int)(Mathf.Min(maxSpeed, maxSpeed * turboMultiplier));
+        maxReverseSpeed = (int)(Mathf.Min(maxReverseSpeed, maxReverseSpeed * turboMultiplier));
+      }else{
+        maxSpeed = (int)(Mathf.Max(maxSpeed, maxSpeed / turboMultiplier));
+        maxReverseSpeed = (int)(Mathf.Max(maxReverseSpeed, maxReverseSpeed / turboMultiplier));
+      }
       //CAR DATA
       // We determine the speed of the car.
       //carSpeed = (2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 60) / 1000;
@@ -499,11 +509,16 @@ public class PrometeoCarController : MonoBehaviour
     //
     //ENGINE AND BRAKING METHODS
     //
+    float turboMultiplier = 2f;
+    float multiplier;
+
+    bool isTurboActive = false;
 
     // This method apply positive torque to the wheels in order to go forward.
     public void GoForward(){
       //If the forces aplied to the rigidbody in the 'x' asis are greater than
       //3f, it means that the car is losing traction, then the car will start emitting particle systems.
+      
       if(Mathf.Abs(localVelocityX) > 2.5f){
         isDrifting = true;
         DriftCarPS();
@@ -525,13 +540,13 @@ public class PrometeoCarController : MonoBehaviour
         if(Mathf.RoundToInt(carSpeed) < maxSpeed){
           //Apply positive torque in all wheels to go forward if maxSpeed has not been reached.
           frontLeftCollider.brakeTorque = 0;
-          frontLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
+          frontLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis * multiplier;
           frontRightCollider.brakeTorque = 0;
-          frontRightCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
+          frontRightCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis * multiplier;
           rearLeftCollider.brakeTorque = 0;
-          rearLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
+          rearLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis * multiplier;
           rearRightCollider.brakeTorque = 0;
-          rearRightCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
+          rearRightCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis * multiplier;
         }else {
           // If the maxSpeed has been reached, then stop applying torque to the wheels.
           // IMPORTANT: The maxSpeed variable should be considered as an approximation; the speed of the car
@@ -569,13 +584,13 @@ public class PrometeoCarController : MonoBehaviour
         if(Mathf.Abs(Mathf.RoundToInt(carSpeed)) < maxReverseSpeed){
           //Apply negative torque in all wheels to go in reverse if maxReverseSpeed has not been reached.
           frontLeftCollider.brakeTorque = 0;
-          frontLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
+          frontLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis * multiplier;
           frontRightCollider.brakeTorque = 0;
-          frontRightCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
+          frontRightCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis * multiplier;
           rearLeftCollider.brakeTorque = 0;
-          rearLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
+          rearLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis * multiplier;
           rearRightCollider.brakeTorque = 0;
-          rearRightCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
+          rearRightCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis * multiplier;
         }else {
           //If the maxReverseSpeed has been reached, then stop applying torque to the wheels.
           // IMPORTANT: The maxReverseSpeed variable should be considered as an approximation; the speed of the car
@@ -776,4 +791,11 @@ public class PrometeoCarController : MonoBehaviour
       }
     }
 
+    public void ApplyTurboEffect() {
+        isTurboActive = true;
+    }
+
+    public void StopTurboEffect() {
+        isTurboActive = false;
+    }
 }

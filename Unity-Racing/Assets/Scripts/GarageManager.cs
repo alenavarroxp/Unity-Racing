@@ -99,6 +99,9 @@ public class GarageManager : MonoBehaviour
         // Controla los dos Speed Texts
         speedTextCar1.SetActive(index == 0);
         speedTextCar2.SetActive(index == 1);
+
+        if (selectButton != null && !selectButton.activeSelf)
+        selectButton.SetActive(true);
     }
 
     public void NextCar() => SelectCar((currentIndex + 1) % carVariants.Count);
