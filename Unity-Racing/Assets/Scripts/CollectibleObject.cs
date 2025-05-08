@@ -6,6 +6,8 @@ public class CollectibleObject : MonoBehaviour
     public ParticleSystem areaEffect;
     private AudioSource audioSource;
 
+    [SerializeField] public bool canRotate = true;
+
     void Awake()
     {
         var soundObj = GameObject.Find("Collectible Sound");
@@ -15,7 +17,10 @@ public class CollectibleObject : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(0, 100 * Time.deltaTime, 0);
+        if (canRotate)
+        {
+            transform.Rotate(0, 100 * Time.deltaTime, 0);
+        }
     }
 
     public void Collect()
