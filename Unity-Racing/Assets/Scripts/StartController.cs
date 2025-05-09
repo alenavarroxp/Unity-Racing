@@ -10,6 +10,8 @@ public class StartController : MonoBehaviour
     public GameObject buttons;
     public GameObject speedText;
 
+    public TimerController timer;
+
     public void ActivateManagers()
     {
         if (objectManager != null) objectManager.SetActive(true);
@@ -20,4 +22,17 @@ public class StartController : MonoBehaviour
         if (buttons != null) buttons.SetActive(true);
         if (speedText != null) speedText.SetActive(true);
     }
+
+    public void InitTimer(){
+        timer.Iniciar();
+    }
+
+    public void controlTimer(bool enable){
+        if (enable){
+            timer.Reanudar();
+        } else {
+            timer.Pausar();
+        }
+    }
+
 }

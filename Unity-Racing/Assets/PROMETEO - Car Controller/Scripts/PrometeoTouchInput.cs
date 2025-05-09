@@ -14,7 +14,7 @@ public class PrometeoTouchInput : MonoBehaviour
 
     bool isOutOfFuel = false;
     private AudioSource audioSource;
-    public GarageManager garageManager;
+    private GarageManager garageManager;
 
 
     void Start() {

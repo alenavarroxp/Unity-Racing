@@ -716,6 +716,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 922275980}
+        m_TargetAssemblyTypeName: StartController, Assembly-CSharp
+        m_MethodName: controlTimer
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnTargetLost:
     m_PersistentCalls:
       m_Calls:
@@ -767,6 +779,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 922275980}
+        m_TargetAssemblyTypeName: StartController, Assembly-CSharp
+        m_MethodName: controlTimer
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &34332053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,6 +831,7 @@ Transform:
   - {fileID: 922275979}
   - {fileID: 1826167859}
   - {fileID: 1954680253}
+  - {fileID: 1989487673}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &34332055
@@ -2065,7 +2090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5316046413323435999, guid: 351baf954590df348a71254a311227b1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5316046413514025810, guid: 351baf954590df348a71254a311227b1, type: 3}
       propertyPath: m_LocalScale.x
@@ -4683,7 +4708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &430753216
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5147,7 +5172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5316046413323435999, guid: 351baf954590df348a71254a311227b1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5316046413514025810, guid: 351baf954590df348a71254a311227b1, type: 3}
       propertyPath: m_LocalScale.x
@@ -7168,7 +7193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5316046413323435999, guid: 351baf954590df348a71254a311227b1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5316046413514025810, guid: 351baf954590df348a71254a311227b1, type: 3}
       propertyPath: m_LocalScale.x
@@ -10031,7 +10056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &845521643
 Transform:
   m_ObjectHideFlags: 0
@@ -10369,6 +10394,7 @@ MonoBehaviour:
   objectBar: {fileID: 1664483139}
   buttons: {fileID: 430753215}
   speedText: {fileID: 1329886192}
+  timer: {fileID: 1989487672}
 --- !u!1001 &924817690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12385,7 +12411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1265183413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13010,7 +13036,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1329886193
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15970,6 +15996,8 @@ MonoBehaviour:
   finishSound: {fileID: 706295432}
   objectManager: {fileID: 845521644}
   endObjectsText: {fileID: 94598909}
+  timer: {fileID: 1989487672}
+  endTimeText: {fileID: 2069138180}
   quantityText: {fileID: 515106869}
 --- !u!1 &1665581555
 GameObject:
@@ -16638,7 +16666,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1779911198
 Transform:
   m_ObjectHideFlags: 0
@@ -17984,6 +18012,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 922275980}
+        m_TargetAssemblyTypeName: StartController, Assembly-CSharp
+        m_MethodName: InitTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1874750011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18614,6 +18654,50 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1989487671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1989487673}
+  - component: {fileID: 1989487672}
+  m_Layer: 0
+  m_Name: TimerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1989487672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989487671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0057f3310f93a94fbeb2faf4fb7effb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1989487673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989487671}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 34332054}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1991142267
 PrefabInstance:
   m_ObjectHideFlags: 0

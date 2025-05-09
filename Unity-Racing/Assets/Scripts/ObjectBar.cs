@@ -15,6 +15,8 @@ public class ObjectBar : MonoBehaviour
 
     [SerializeField] ObjectManager objectManager;
     [SerializeField] Text endObjectsText;
+    [SerializeField] TimerController timer;
+    [SerializeField] Text endTimeText;
 
 
     public Text quantityText;
@@ -56,6 +58,9 @@ public class ObjectBar : MonoBehaviour
             audioSource.Stop();
             finishSound.Play();
             objectManager.GetCountObjects();
+
+            timer.Pausar();
+            endTimeText.text = timer.GetTiempoFormateado();
         }
     }
 
