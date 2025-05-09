@@ -6,6 +6,8 @@ public class CollectibleObject : MonoBehaviour
     public ParticleSystem areaEffect;
     private AudioSource audioSource;
 
+    public ObjectManager objectManager;
+
     [SerializeField] public bool canRotate = true;
 
     void Awake()
@@ -25,6 +27,7 @@ public class CollectibleObject : MonoBehaviour
 
     public void Collect()
     {
+    
         if (collectEffect != null)
         {
             Instantiate(collectEffect, transform.position, Quaternion.identity).Play();
@@ -38,6 +41,11 @@ public class CollectibleObject : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.Play();
+        }
+
+        if (objectManager != null)
+        {
+            objectManager.AddObject();
         }
 
         Destroy(gameObject);

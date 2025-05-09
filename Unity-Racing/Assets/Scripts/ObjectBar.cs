@@ -8,6 +8,15 @@ public class ObjectBar : MonoBehaviour
     [SerializeField] float maxValue = 100;
     [SerializeField] float objectValue = 10;
 
+    [SerializeField] Canvas canvas;
+    [SerializeField] Canvas EndCanvas;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource finishSound;
+
+    [SerializeField] ObjectManager objectManager;
+    [SerializeField] Text endObjectsText;
+
+
     public Text quantityText;
     float currentValue;
     float displayValue;
@@ -37,7 +46,16 @@ public class ObjectBar : MonoBehaviour
 
         if(currentValue == maxValue)
         {
-            Debug.Log("Bar is full!");
+            canvas.gameObject.SetActive(false);
+            EndCanvas.gameObject.SetActive(true);
+
+            int count = objectManager.GetCountObjects();
+            string label = count == 1 ? " objeto" : " objetos";
+            endObjectsText.text = count.ToString() + label;
+
+            audioSource.Stop();
+            finishSound.Play();
+            objectManager.GetCountObjects();
         }
     }
 
