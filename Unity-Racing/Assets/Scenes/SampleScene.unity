@@ -710,6 +710,7 @@ GameObject:
   - component: {fileID: 34332054}
   - component: {fileID: 34332053}
   - component: {fileID: 34332052}
+  - component: {fileID: 34332055}
   m_Layer: 0
   m_Name: Ground Plane Stage
   m_TagString: Untagged
@@ -913,7 +914,7 @@ MonoBehaviour:
   mSelectedStageType: 0
   mPlaneReference: {fileID: 0}
   mMidAirReference: {fileID: 0}
-  mPreview: {fileID: 0}
+  mPreview: {fileID: 34332055}
 --- !u!4 &34332054
 Transform:
   m_ObjectHideFlags: 0
@@ -938,6 +939,23 @@ Transform:
   - {fileID: 1634213394}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &34332055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34332050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1308684972, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 34332053}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: 
+  mDatasetName: 
+  mCastedBehaviour: {fileID: 34332053}
 --- !u!1 &34551912
 GameObject:
   m_ObjectHideFlags: 0
@@ -7635,6 +7653,7 @@ MonoBehaviour:
   canvas: {fileID: 1786550224}
   EndCanvas: {fileID: 1265183415}
   audioSource: {fileID: 854581487}
+  derrapeSource: {fileID: 370833577}
   finishSound: {fileID: 706295432}
   objectManager: {fileID: 845521644}
   endObjectsText: {fileID: 94598909}
@@ -10595,6 +10614,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7480653384747740098, guid: ac7dc99dea45cae4a832d62fc1a059fc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1634213396}
+    - targetCorrespondingSourceObject: {fileID: 7480653384747740098, guid: ac7dc99dea45cae4a832d62fc1a059fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1634213400}
   m_SourcePrefab: {fileID: 100100000, guid: ac7dc99dea45cae4a832d62fc1a059fc, type: 3}
 --- !u!1 &922275978
 GameObject:
@@ -14240,6 +14262,7 @@ MonoBehaviour:
   canvas: {fileID: 1786550224}
   EndCanvas: {fileID: 1265183415}
   audioSource: {fileID: 854581487}
+  derrapeSource: {fileID: 370833577}
   finishSound: {fileID: 706295432}
   objectManager: {fileID: 845521644}
   endObjectsText: {fileID: 94598909}
@@ -15953,7 +15976,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.18
-  m_Speed: 0.1
+  m_Speed: 0.001
   m_Acceleration: 2
   avoidancePriority: 50
   m_AngularSpeed: 100
@@ -15965,6 +15988,29 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &1634213400
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634213390}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.14
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1001 &1636304243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16415,6 +16461,7 @@ MonoBehaviour:
   canvas: {fileID: 1786550224}
   EndCanvas: {fileID: 1265183415}
   audioSource: {fileID: 854581487}
+  derrapeSource: {fileID: 370833577}
   finishSound: {fileID: 706295432}
   objectManager: {fileID: 845521644}
   endObjectsText: {fileID: 94598909}

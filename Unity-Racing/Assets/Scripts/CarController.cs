@@ -24,6 +24,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private Canvas canvas;
     [SerializeField] private Canvas EndCanvas;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] AudioSource derrapeSource;
     [SerializeField] private AudioSource finishSound;
     [SerializeField] private ObjectManager objectManager;
     [SerializeField] private Text endObjectsText;
@@ -82,7 +83,7 @@ public class CarController : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (!gameObject.activeInHierarchy) return;
-        
+
         Debug.Log("Algo entró al trigger: " + other.name);
 
         if (other.CompareTag("Gas"))
@@ -121,6 +122,7 @@ public class CarController : MonoBehaviour
             endObjectsText.text = count.ToString() + label;
 
             audioSource.Stop();
+            derrapeSource.Stop();
             finishSound.Play();
             objectManager.GetCountObjects();
 
@@ -135,6 +137,7 @@ public class CarController : MonoBehaviour
                     controller.StopLogging();
                     controller.AddFinalLogEntry(count, timer.GetTiempo());
             }
+            gameObject.SetActive(false);
         }
 
         if (other.CompareTag("Deadpool"))

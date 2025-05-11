@@ -11,6 +11,7 @@ public class ObjectBar : MonoBehaviour
     [SerializeField] Canvas canvas;
     [SerializeField] Canvas EndCanvas;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource derrapeSource;
     [SerializeField] AudioSource finishSound;
 
     [SerializeField] ObjectManager objectManager;
@@ -56,6 +57,7 @@ public class ObjectBar : MonoBehaviour
             endObjectsText.text = count.ToString() + label;
 
             audioSource.Stop();
+            derrapeSource.Stop();
             finishSound.Play();
             objectManager.GetCountObjects();
 
@@ -70,6 +72,7 @@ public class ObjectBar : MonoBehaviour
                     controller.StopLogging();
                     controller.AddFinalLogEntry(count, timer.GetTiempo());
             }
+            car.gameObject.SetActive(false);
         }
     }
 
