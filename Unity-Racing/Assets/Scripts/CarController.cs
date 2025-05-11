@@ -68,6 +68,29 @@ public class CarController : MonoBehaviour
                 objectBar.AddObject();
             }
         }
+
+        if (other.CompareTag("Deadpool"))
+        {
+            GameObject crown = GameObject.Find("DeadpoolCrownObject");
+            if (crown != null)
+            {
+                CollectibleObject collectible = crown.GetComponent<CollectibleObject>();
+                if (collectible != null)
+                {
+                    collectible.Collect();
+                }
+
+                Destroy(crown);
+                if (objectBar != null)
+                {
+                    objectBar.AddObject();
+                }
+            }
+
+            
+
+            Debug.Log("Deadpool ModelTarget recogido.");
+        }
     }
     
     void OnTriggerExit(Collider other)
