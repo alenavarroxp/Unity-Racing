@@ -61,6 +61,15 @@ public class ObjectBar : MonoBehaviour
 
             timer.Pausar();
             endTimeText.text = timer.GetTiempoFormateado();
+
+            GameObject car = GameObject.FindWithTag("Player");
+            if (car != null)
+            {
+                CarController controller = car.GetComponent<CarController>();
+                if (controller != null)
+                    controller.StopLogging();
+                    controller.AddFinalLogEntry(count, timer.GetTiempo());
+            }
         }
     }
 
