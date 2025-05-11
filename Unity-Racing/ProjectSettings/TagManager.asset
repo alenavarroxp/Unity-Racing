@@ -7,6 +7,7 @@ TagManager:
   - Gas
   - Collectible
   - Deadpool
+  - Enemy
   layers:
   - Default
   - TransparentFX

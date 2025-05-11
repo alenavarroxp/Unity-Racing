@@ -9,6 +9,7 @@ public class StartController : MonoBehaviour
     public GameObject objectBar;
     public GameObject buttons;
     public GameObject speedText;
+    public GameObject enemy;
 
     public TimerController timer;
 
@@ -21,6 +22,7 @@ public class StartController : MonoBehaviour
         if (objectBar != null) objectBar.SetActive(true);
         if (buttons != null) buttons.SetActive(true);
         if (speedText != null) speedText.SetActive(true);
+        if (enemy != null) enemy.GetComponent<AIFollower>().SetShouldFollow(true);
     }
 
     public void InitTimer(){

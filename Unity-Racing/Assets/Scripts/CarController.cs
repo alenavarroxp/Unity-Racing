@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -19,6 +20,16 @@ public class CarController : MonoBehaviour
     private string filePath;
     private bool isLogging = false;
     private bool collectedThisFrame = false;
+
+    [SerializeField] private Canvas canvas;
+    [SerializeField] private Canvas EndCanvas;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource finishSound;
+    [SerializeField] private ObjectManager objectManager;
+    [SerializeField] private Text endObjectsText;
+    [SerializeField] private TimerController timer;
+    [SerializeField] private Text endTimeText;
+
 
     void Awake()
     {
@@ -70,6 +81,8 @@ public class CarController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (!gameObject.activeInHierarchy) return;
+        
         Debug.Log("Algo entró al trigger: " + other.name);
 
         if (other.CompareTag("Gas"))
@@ -95,6 +108,33 @@ public class CarController : MonoBehaviour
 
             if (objectBar != null)
                 objectBar.AddObject();
+        }
+
+        if(other.CompareTag("Enemy")){
+            other.GetComponent<AIFollower>().SetShouldFollow(false);
+
+            canvas.gameObject.SetActive(false);
+            EndCanvas.gameObject.SetActive(true);
+
+            int count = objectManager.GetCountObjects();
+            string label = count == 1 ? " objeto" : " objetos";
+            endObjectsText.text = count.ToString() + label;
+
+            audioSource.Stop();
+            finishSound.Play();
+            objectManager.GetCountObjects();
+
+            timer.Pausar();
+            endTimeText.text = timer.GetTiempoFormateado();
+
+            GameObject car = GameObject.FindWithTag("Player");
+            if (car != null)
+            {
+                CarController controller = car.GetComponent<CarController>();
+                if (controller != null)
+                    controller.StopLogging();
+                    controller.AddFinalLogEntry(count, timer.GetTiempo());
+            }
         }
 
         if (other.CompareTag("Deadpool"))
