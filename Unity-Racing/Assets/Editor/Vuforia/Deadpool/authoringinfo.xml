@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<QCARInfo>
+    <TargetSet version="36.0" toolVersion="v7.3.1">
+        <ModelTarget name="Deadpool" targetId="06ad49b6b1dd4050a131d7554cbd2cb3" version="14.0" toolVersion="v7.3.1" bbox="-0.0242145 0.00605292 -0.046095 0.0293045 0.0851412 0.00816958" trackingMode="scan" upVector="0.0 1.0 0.0" optimizeTrackingFor="default" realisticTextures="yes" />
+    </TargetSet>
+    <Assembly name="Deadpool" assemblyId="2945f2fc06ed4c0cad5e176010a076d9">
+        <Part name="Deadpool" translation="0 0 0" rotation="AD: 0 0 1 0" />
+        <EntryPoint name="(none)" trained="yes" />
+    </Assembly>
+</QCARInfo>
