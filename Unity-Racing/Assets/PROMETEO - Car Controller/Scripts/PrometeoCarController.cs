@@ -270,7 +270,11 @@ public class PrometeoCarController : MonoBehaviour
     void Update()
     {
 
-      if (!isActiveAndEnabled) return;
+      if (!isActiveAndEnabled) {
+        carEngineSound.Stop();
+        tireScreechSound.Stop();
+        return;
+      }
 
       multiplier = isTurboActive ? turboMultiplier : 1f;
 

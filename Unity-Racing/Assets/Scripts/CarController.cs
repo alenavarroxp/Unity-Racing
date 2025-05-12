@@ -133,9 +133,18 @@ public class CarController : MonoBehaviour
             if (car != null)
             {
                 CarController controller = car.GetComponent<CarController>();
-                if (controller != null)
+                PrometeoCarController prometeoCarController = car.GetComponent<PrometeoCarController>();
+                if (controller != null){
                     controller.StopLogging();
-                    controller.AddFinalLogEntry(count, timer.GetTiempo());
+                    if(count > 1)
+                        controller.AddFinalLogEntry(count, timer.GetTiempo());
+
+                }
+
+                if(prometeoCarController != null){
+                    prometeoCarController.ThrottleOff();
+                    prometeoCarController.StopTurboEffect();  
+                }
             }
             gameObject.SetActive(false);
         }

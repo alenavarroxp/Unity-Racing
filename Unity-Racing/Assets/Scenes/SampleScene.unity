@@ -700,7 +700,6 @@ GameObject:
   - component: {fileID: 34332054}
   - component: {fileID: 34332053}
   - component: {fileID: 34332052}
-  - component: {fileID: 34332055}
   m_Layer: 0
   m_Name: Ground Plane Stage
   m_TagString: Untagged
@@ -872,18 +871,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AIFollower, Assembly-CSharp
-        m_MethodName: SetShouldFollow
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &34332053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -904,7 +891,7 @@ MonoBehaviour:
   mSelectedStageType: 0
   mPlaneReference: {fileID: 0}
   mMidAirReference: {fileID: 0}
-  mPreview: {fileID: 34332055}
+  mPreview: {fileID: 0}
 --- !u!4 &34332054
 Transform:
   m_ObjectHideFlags: 0
@@ -929,23 +916,6 @@ Transform:
   - {fileID: 1634213394}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &34332055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 34332050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1308684972, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 34332053}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: 
-  mDatasetName: 
-  mCastedBehaviour: {fileID: 34332053}
 --- !u!1 &34551912
 GameObject:
   m_ObjectHideFlags: 0
@@ -10458,7 +10428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8154381945409944116, guid: ac7dc99dea45cae4a832d62fc1a059fc, type: 3}
       propertyPath: m_moveSpeed
-      value: 0.1
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 8154381945409944116, guid: ac7dc99dea45cae4a832d62fc1a059fc, type: 3}
       propertyPath: m_rigidBody
@@ -20273,7 +20243,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1m 2s
+  m_Text: 
 --- !u!222 &2069138181
 CanvasRenderer:
   m_ObjectHideFlags: 0
