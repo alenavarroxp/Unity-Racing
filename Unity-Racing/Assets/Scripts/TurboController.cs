@@ -29,21 +29,29 @@ public class TurboController : MonoBehaviour
     void Update()
     {
         bool pressed = turboInput != null && turboInput.buttonPressed;
-        if (pressed && turboBar.CurrentValue > 0f)
-            isTurboActive = true;
-        else
-            isTurboActive = false;
 
-        if (isTurboActive)
+        if (pressed && turboBar.CurrentValue > 0f)
         {
+            if (!isTurboActive)
+            {
+                isTurboActive = true;
+                ApplyTurboEffect();
+            }
+
             turboBar.RemoveValue(consumeRate * Time.deltaTime);
-            ApplyTurboEffect();
 
             if (turboBar.CurrentValue <= 0f)
+            {
                 EndTurbo();
+            }
         }
         else
         {
+            if (isTurboActive)
+            {
+                EndTurbo(); // Turbo fue desactivado manualmente
+            }
+
             turboBar.AddValue(rechargeRate * Time.deltaTime);
         }
     }
@@ -75,6 +83,22 @@ public class TurboController : MonoBehaviour
     private void EndTurbo()
     {
         isTurboActive = false;
-        // Aquí restableces todo lo que hiciste en ApplyTurboEffect()
+        GameObject myCar = GameObject.Find("MyCar");
+        GameObject secondCar = GameObject.Find("SecondCar");
+
+        bool myCarActive = myCar != null && myCar.activeInHierarchy;
+        bool secondCarActive = secondCar != null && secondCar.activeInHierarchy;
+    
+        if (myCarActive)
+        {
+            carController = myCar.GetComponent<PrometeoCarController>();
+            carController?.StopTurboEffect();
+        }
+
+        if (secondCarActive)
+        {
+            carController = secondCar.GetComponent<PrometeoCarController>();
+            carController?.StopTurboEffect();
+        }
     }
 }

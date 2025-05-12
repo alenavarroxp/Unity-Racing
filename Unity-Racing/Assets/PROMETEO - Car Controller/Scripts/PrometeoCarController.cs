@@ -158,10 +158,13 @@ public class PrometeoCarController : MonoBehaviour
       WheelFrictionCurve RRwheelFriction;
       float RRWextremumSlip;
 
+      private AudioSource turboSound;
     // Start is called before the first frame update
     void Start()
     {
       if (!isActiveAndEnabled) return;
+
+      turboSound = GameObject.Find("Turbo Sound").GetComponent<AudioSource>();
       //In this part, we set the 'carRigidbody' value with the Rigidbody attached to this
       //gameObject. Also, we define the center of mass of the car with the Vector3 given
       //in the inspector.
@@ -509,7 +512,7 @@ public class PrometeoCarController : MonoBehaviour
     //
     //ENGINE AND BRAKING METHODS
     //
-    float turboMultiplier = 2f;
+    float turboMultiplier = 2.5f;
     float multiplier;
 
     bool isTurboActive = false;
@@ -518,8 +521,8 @@ public class PrometeoCarController : MonoBehaviour
     public void GoForward(){
       //If the forces aplied to the rigidbody in the 'x' asis are greater than
       //3f, it means that the car is losing traction, then the car will start emitting particle systems.
-      
-      if(Mathf.Abs(localVelocityX) > 2.5f){
+      Debug.Log("localVelocityX: " + localVelocityX);
+      if(Mathf.Abs(localVelocityX) > 0.1f){
         isDrifting = true;
         DriftCarPS();
       }else{
@@ -534,7 +537,7 @@ public class PrometeoCarController : MonoBehaviour
       //If the car is going backwards, then apply brakes in order to avoid strange
       //behaviours. If the local velocity in the 'z' axis is less than -1f, then it
       //is safe to apply positive torque to go forward.
-      if(localVelocityZ < -1f){
+      if(localVelocityZ < 0f){
         Brakes();
       }else{
         if(Mathf.RoundToInt(carSpeed) < maxSpeed){
@@ -563,7 +566,7 @@ public class PrometeoCarController : MonoBehaviour
     public void GoReverse(){
       //If the forces aplied to the rigidbody in the 'x' asis are greater than
       //3f, it means that the car is losing traction, then the car will start emitting particle systems.
-      if(Mathf.Abs(localVelocityX) > 2.5f){
+      if(Mathf.Abs(localVelocityX) > 0.1f){
         isDrifting = true;
         DriftCarPS();
       }else{
@@ -578,7 +581,7 @@ public class PrometeoCarController : MonoBehaviour
       //If the car is still going forward, then apply brakes in order to avoid strange
       //behaviours. If the local velocity in the 'z' axis is greater than 1f, then it
       //is safe to apply negative torque to go reverse.
-      if(localVelocityZ > 1f){
+      if(localVelocityZ > 0f){
         Brakes();
       }else{
         if(Mathf.Abs(Mathf.RoundToInt(carSpeed)) < maxReverseSpeed){
@@ -792,10 +795,22 @@ public class PrometeoCarController : MonoBehaviour
     }
 
     public void ApplyTurboEffect() {
-        isTurboActive = true;
+      Debug.Log("Applying turbo effect: " + !isTurboActive);
+      if (!isTurboActive) {
+          isTurboActive = true;
+          if (turboSound != null && !turboSound.isPlaying) {
+              turboSound.Play();
+          }
+      }
     }
 
     public void StopTurboEffect() {
-        isTurboActive = false;
+      Debug.Log("Stopping turbo effect" + isTurboActive);
+      if (isTurboActive) {
+          isTurboActive = false;
+          if (turboSound != null && turboSound.isPlaying) {
+              turboSound.Stop();
+          }
+      }
     }
 }
